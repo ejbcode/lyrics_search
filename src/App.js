@@ -1,25 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import Header from "./components/Header";
+import Form from "./components/Form";
+import Song from "./components/Song";
+import Band from "./components/Band";
 
 function App() {
+  const [search, setSearch] = useState({});
+  const [data1, setData1] = useState();
+  const [data2, setData2] = useState();
+  const URL = `https://api.lyrics.ovh/v1/${search.band}/${search.song}`;
+  const URL2 = `https://www.theaudiodb.com/api/v1/json/1/search.php?s=${search.band}`;
+
+  useEffect(() => {
+    const dataFromApi = async () => {
+      if (Object.keys(search).length === 0) return;
+      const response = await Promise.all([fetch(URL), fetch(URL2)]);
+      const result1 = await response[0].json();
+      const result2 = await response[1].json();
+      setData1(result1);
+      setData2(result2);
+    };
+    dataFromApi();
+  }, [URL, URL2, search]);
+
+  console.log(data1);
+  console.log(data2);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <Form setSearch={setSearch} />
+      <div className="row">
+        <div className="col s12 m6">
+          <Band {...data2} />
+        </div>
+        <div className="col s12 m6">
+          <Song {...data1} />
+        </div>
+      </div>
+    </>
   );
 }
 
