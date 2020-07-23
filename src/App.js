@@ -24,18 +24,16 @@ function App() {
     dataFromApi();
   }, [URL, URL2, search]);
 
-  console.log(data1);
-  console.log(data2);
   return (
     <>
       <Header />
       <Form setSearch={setSearch} />
-      <div className="row">
+      <div className="row container">
         <div className="col s12 m6">
           <Band {...data2} />
         </div>
         <div className="col s12 m6">
-          <Song {...data1} />
+          <Song {...data1} song={search.song} />
         </div>
       </div>
     </>

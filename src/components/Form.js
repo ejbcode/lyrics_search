@@ -58,7 +58,7 @@ const Form = ({ setSearch }) => {
             ></span>
           </div>
           <button
-            className="btn waves-effect waves-light col s12 m4 right"
+            className="btn waves-effect waves-light col s12 m2 right"
             type="submit"
             name="action"
           >

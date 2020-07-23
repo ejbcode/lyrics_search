@@ -1,3 +1,22 @@
 .letra {
   white-space: pre-wrap;
+  padding: 2rem;
+}
+.title_song {
+  text-transform: capitalize;
+}
+
+.song {
+  display: inline-block;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  background: hsla(67, 95%, 95%, 1);
+  border: solid 5px #333;
+}
+
+.biography_title {
+  padding: 0 1.5rem !important;
+}
+
+.biography_content {
+  padding: 0 1.9rem;
 }

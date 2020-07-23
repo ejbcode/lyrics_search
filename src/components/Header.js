@@ -5,7 +5,7 @@ const Header = () => {
     <nav>
       <div className="nav-wrapper cyan darken-3">
         <a href="#!" className="brand-logo center">
-          Logo
+          Lyrics search
         </a>
       </div>
     </nav>
